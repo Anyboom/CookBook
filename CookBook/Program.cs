@@ -1,8 +1,9 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using CookBook.Instances;
+using CookBook.Models;
+using CookBook.Services;
 
 namespace CookBook
 {
@@ -17,7 +18,21 @@ namespace CookBook
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            App.Instance.MainForm = new MainForm();
+
+            using (MainContext db = new MainContext())
+            {
+                if (db.Database.CanConnect() == false)
+                {
+                    MessageService.ShowError("Соединение не установлено.");
+
+                    Application.Exit();
+                }
+                else
+                {
+                    Application.Run(App.Instance);
+                }
+            }
         }
     }
 }

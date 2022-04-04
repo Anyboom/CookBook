@@ -11,7 +11,7 @@ namespace CookBook.Models
 {
     sealed class MainContext : DbContext
     {
-        private MainContext()
+        public MainContext()
         {
             Database.EnsureDeleted();
             Database.EnsureCreated();
