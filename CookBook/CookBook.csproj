@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Dialogs\Dish\" />
+    <Folder Include="Dialogs\Authentication\" />
   </ItemGroup>
 
 </Project>
