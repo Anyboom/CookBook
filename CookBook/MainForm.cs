@@ -30,5 +30,44 @@ namespace CookBook
             CategoryCombo.ValueMember = "Id";
 
         }
+
+        private void UpdateTableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using MainContext db = new MainContext();
+
+            IQueryable<Dish> query = db.Dishes;
+
+            if (CategoryCheck.Checked && CategoryCombo.SelectedValue is not null)
+            {
+                query = query.Where(s => s.CategoryId == (int) CategoryCombo.SelectedValue);
+            }
+
+            if (KitchenCheck.Checked && KitchenCombo.SelectedValue is not null)
+            {
+                query = query.Where(s => s.KitchenId == (int) KitchenCombo.SelectedValue);
+            }
+
+            DishGrid.DataSource = query.Select(s => new
+            {
+                s.Id,
+                s.KitchenId,
+                s.CategoryId,
+                s.Title,
+                KitchenName = s.Kitchen.Name,
+                CategoryName = s.Category.Name
+            }).ToList();
+            
+        }
+
+        private void DishGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            DishGrid.Columns["Id"].HeaderText = "ИД";
+            DishGrid.Columns["Title"].HeaderText = "НАЗВАНИЕ";
+            DishGrid.Columns["KitchenName"].HeaderText = "КУХНЯ";
+            DishGrid.Columns["CategoryName"].HeaderText = "КАТЕГОРИЯ";
+
+            DishGrid.Columns["KitchenId"].Visible = false;
+            DishGrid.Columns["CategoryId"].Visible = false;
+        }
     }
 }

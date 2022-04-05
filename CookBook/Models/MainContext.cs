@@ -32,6 +32,16 @@ namespace CookBook.Models
             });
 
             SaveChanges();
+
+            Dishes.Add(new Dish()
+            {
+                Title = "Сырная",
+                Recipe = "Томатный соус, сыр моццарела, смесь сыров",
+                CategoryId = 1,
+                KitchenId = 1
+            });
+
+            SaveChanges();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
