@@ -117,7 +117,8 @@ namespace CookBook.Dialogs.Category
             this.MinimizeBox = false;
             this.Name = "CategoryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Категории рецетов";
+            this.Text = "Категории рецептов";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CategoryForm_FormClosing);
             this.Load += new System.EventHandler(this.CategoryForm_Load);
             this.MainGroup.ResumeLayout(false);
             this.MainContextMenu.ResumeLayout(false);

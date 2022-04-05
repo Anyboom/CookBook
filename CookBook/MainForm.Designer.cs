@@ -130,7 +130,7 @@ namespace CookBook
             this.toolStripSeparator2,
             this.UpdateTableToolStripMenuItem});
             this.MainContextMenu.Name = "MainContextMenu";
-            this.MainContextMenu.Size = new System.Drawing.Size(181, 104);
+            this.MainContextMenu.Size = new System.Drawing.Size(181, 126);
             // 
             // AddDishToolStripMenuItem
             // 
@@ -148,12 +148,14 @@ namespace CookBook
             this.ShowCategoriesToolStripMenuItem.Name = "ShowCategoriesToolStripMenuItem";
             this.ShowCategoriesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ShowCategoriesToolStripMenuItem.Text = "Открыть категории";
+            this.ShowCategoriesToolStripMenuItem.Click += new System.EventHandler(this.ShowCategoriesToolStripMenuItem_Click);
             // 
             // ShowKitchensToolStripMenuItem
             // 
             this.ShowKitchensToolStripMenuItem.Name = "ShowKitchensToolStripMenuItem";
             this.ShowKitchensToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ShowKitchensToolStripMenuItem.Text = "Открыть кухни";
+            this.ShowKitchensToolStripMenuItem.Click += new System.EventHandler(this.ShowKitchensToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 

@@ -13,35 +13,35 @@ namespace CookBook.Models
     {
         public MainContext()
         {
-            Database.EnsureDeleted();
-            Database.EnsureCreated();
+            //Database.EnsureDeleted();
+            //Database.EnsureCreated();
 
-            Categories.Add(new Category()
-            {
-                Name = "Пицца"
-            });
+            //Categories.Add(new Category()
+            //{
+            //    Name = "Пицца"
+            //});
 
-            Kitchens.Add(new Kitchen()
-            {
-                Name = "Итальянская"
-            });
+            //Kitchens.Add(new Kitchen()
+            //{
+            //    Name = "Итальянская"
+            //});
 
-            Kitchens.Add(new Kitchen()
-            {
-                Name = "Русская"
-            });
+            //Kitchens.Add(new Kitchen()
+            //{
+            //    Name = "Русская"
+            //});
 
-            SaveChanges();
+            //SaveChanges();
 
-            Dishes.Add(new Dish()
-            {
-                Title = "Сырная",
-                Recipe = "Томатный соус, сыр моццарела, смесь сыров",
-                CategoryId = 1,
-                KitchenId = 1
-            });
+            //Dishes.Add(new Dish()
+            //{
+            //    Title = "Сырная",
+            //    Recipe = "Томатный соус, сыр моццарела, смесь сыров",
+            //    CategoryId = 1,
+            //    KitchenId = 1
+            //});
 
-            SaveChanges();
+            //SaveChanges();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

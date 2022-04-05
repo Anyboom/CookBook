@@ -9,6 +9,7 @@ namespace CookBook.Dialogs.Kitchen
 {
     public partial class KitchenForm : Form
     {
+        public bool Edited = false;
         public KitchenForm()
         {
             InitializeComponent();
@@ -16,7 +17,9 @@ namespace CookBook.Dialogs.Kitchen
 
         private void KitchenForm_Load(object sender, EventArgs e)
         {
-            MainList.DataSource = new Models.Kitchen();
+            using MainContext db = new MainContext();
+
+            MainList.DataSource = db.Kitchens.ToList();
             MainList.ValueMember = "Id";
             MainList.DisplayMember = "Name";
         }
@@ -40,6 +43,8 @@ namespace CookBook.Dialogs.Kitchen
             db.Kitchens.Add(newKichen);
 
             db.SaveChanges();
+
+            Edited = true;
         }
 
         private void RemoveKitchenMenu_Click(object sender, EventArgs e)
@@ -65,6 +70,8 @@ namespace CookBook.Dialogs.Kitchen
             db.Kitchens.Remove(kichenForRemove);
 
             db.SaveChanges();
+
+            Edited = true;
         }
 
         private void EditKitchenMenu_Click(object sender, EventArgs e)
@@ -90,6 +97,8 @@ namespace CookBook.Dialogs.Kitchen
             db.Kitchens.Update(kichenForEdit);
 
             db.SaveChanges();
+
+            Edited = true;
         }
 
         private void UpdateTableMenu_Click(object sender, EventArgs e)
@@ -97,6 +106,14 @@ namespace CookBook.Dialogs.Kitchen
             using MainContext db = new MainContext();
 
             MainList.DataSource = db.Kitchens.ToList();
+        }
+
+        private void KitchenForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Edited)
+            {
+                DialogResult = DialogResult.OK;
+            }
         }
     }
 }

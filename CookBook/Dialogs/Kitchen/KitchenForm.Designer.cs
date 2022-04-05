@@ -71,38 +71,38 @@ namespace CookBook.Dialogs.Kitchen
             this.toolStripSeparator1,
             this.UpdateTableMenu});
             this.MainContextMenu.Name = "MainContextMenu";
-            this.MainContextMenu.Size = new System.Drawing.Size(181, 120);
+            this.MainContextMenu.Size = new System.Drawing.Size(177, 98);
             // 
             // AddKitchenMenu
             // 
             this.AddKitchenMenu.Name = "AddKitchenMenu";
-            this.AddKitchenMenu.Size = new System.Drawing.Size(180, 22);
+            this.AddKitchenMenu.Size = new System.Drawing.Size(176, 22);
             this.AddKitchenMenu.Text = "Добавить";
             this.AddKitchenMenu.Click += new System.EventHandler(this.AddKitchenMenu_Click);
             // 
             // RemoveKitchenMenu
             // 
             this.RemoveKitchenMenu.Name = "RemoveKitchenMenu";
-            this.RemoveKitchenMenu.Size = new System.Drawing.Size(180, 22);
+            this.RemoveKitchenMenu.Size = new System.Drawing.Size(176, 22);
             this.RemoveKitchenMenu.Text = "Удалить";
             this.RemoveKitchenMenu.Click += new System.EventHandler(this.RemoveKitchenMenu_Click);
             // 
             // EditKitchenMenu
             // 
             this.EditKitchenMenu.Name = "EditKitchenMenu";
-            this.EditKitchenMenu.Size = new System.Drawing.Size(180, 22);
+            this.EditKitchenMenu.Size = new System.Drawing.Size(176, 22);
             this.EditKitchenMenu.Text = "Редактировать";
             this.EditKitchenMenu.Click += new System.EventHandler(this.EditKitchenMenu_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(173, 6);
             // 
             // UpdateTableMenu
             // 
             this.UpdateTableMenu.Name = "UpdateTableMenu";
-            this.UpdateTableMenu.Size = new System.Drawing.Size(180, 22);
+            this.UpdateTableMenu.Size = new System.Drawing.Size(176, 22);
             this.UpdateTableMenu.Text = "Обновить таблицу";
             this.UpdateTableMenu.Click += new System.EventHandler(this.UpdateTableMenu_Click);
             // 
@@ -117,7 +117,8 @@ namespace CookBook.Dialogs.Kitchen
             this.MinimizeBox = false;
             this.Name = "KitchenForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Кухни рецетов";
+            this.Text = "Кухни рецептов";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.KitchenForm_FormClosing);
             this.Load += new System.EventHandler(this.KitchenForm_Load);
             this.MainGroup.ResumeLayout(false);
             this.MainContextMenu.ResumeLayout(false);

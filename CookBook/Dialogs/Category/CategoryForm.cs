@@ -9,6 +9,7 @@ namespace CookBook.Dialogs.Category
 {
     public partial class CategoryForm : Form
     {
+        public bool Edited = false;
         public CategoryForm()
         {
             InitializeComponent();
@@ -16,7 +17,9 @@ namespace CookBook.Dialogs.Category
 
         private void CategoryForm_Load(object sender, EventArgs e)
         {
-            MainList.DataSource = new Models.Category();
+            using MainContext db = new MainContext();
+
+            MainList.DataSource = db.Categories.ToList();
             MainList.ValueMember = "Id";
             MainList.DisplayMember = "Name";
         }
@@ -25,7 +28,7 @@ namespace CookBook.Dialogs.Category
         {
             string name = MessageService.InputBox("Введите имя для новой категории:");
 
-            if (string.IsNullOrEmpty((name)))
+            if (string.IsNullOrEmpty(name))
             {
                 return;
             }
@@ -40,6 +43,8 @@ namespace CookBook.Dialogs.Category
             db.Categories.Add(newCategory);
 
             db.SaveChanges();
+
+            Edited = true;
         }
 
         private void RemoveCategoryMenu_Click(object sender, EventArgs e)
@@ -65,6 +70,8 @@ namespace CookBook.Dialogs.Category
             db.Categories.Remove(categoryForRemove);
 
             db.SaveChanges();
+
+            Edited = true;
         }
 
         private void EditCategoryMenu_Click(object sender, EventArgs e)
@@ -90,6 +97,8 @@ namespace CookBook.Dialogs.Category
             db.Categories.Update(categoryForEdit);
 
             db.SaveChanges();
+
+            Edited = true;
         }
 
         private void UpdateTableMenu_Click(object sender, EventArgs e)
@@ -97,6 +106,14 @@ namespace CookBook.Dialogs.Category
             using MainContext db = new MainContext();
 
             MainList.DataSource = db.Categories.ToList();
+        }
+
+        private void CategoryForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (Edited)
+            {
+                DialogResult = DialogResult.OK;
+            }
         }
     }
 }
