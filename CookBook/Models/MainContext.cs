@@ -15,6 +15,23 @@ namespace CookBook.Models
         {
             Database.EnsureDeleted();
             Database.EnsureCreated();
+
+            Categories.Add(new Category()
+            {
+                Name = "Пицца"
+            });
+
+            Kitchens.Add(new Kitchen()
+            {
+                Name = "Итальянская"
+            });
+
+            Kitchens.Add(new Kitchen()
+            {
+                Name = "Русская"
+            });
+
+            SaveChanges();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -22,5 +39,9 @@ namespace CookBook.Models
             optionsBuilder.UseSqlServer(Variables.ConnectionString);
             optionsBuilder.LogTo(message => Debug.WriteLine(message));
         }
+
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Kitchen> Kitchens { get; set; }
+        public DbSet<Dish> Dishes { get; set; }
     }
 }

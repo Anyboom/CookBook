@@ -9,29 +9,26 @@ namespace CookBook
 {
     static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
             App.Instance.MainForm = new MainForm();
 
-            using (MainContext db = new MainContext())
-            {
-                if (db.Database.CanConnect() == false)
-                {
-                    MessageService.ShowError("Соединение не установлено.");
+            using MainContext db = new MainContext();
 
-                    Application.Exit();
-                }
-                else
-                {
-                    Application.Run(App.Instance);
-                }
+            if (db.Database.CanConnect() == false)
+            {
+                MessageService.ShowError("Соединение с базой данных не установлено.");
+
+                Application.Exit();
+            }
+            else
+            {
+                Application.Run(App.Instance);
             }
         }
     }

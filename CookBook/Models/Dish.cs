@@ -9,5 +9,9 @@ namespace CookBook.Models
     class Dish
     {
         public int Id { get; set; }
+        public string Title { get; set; }
+        public string Caption { get; set; }
+        public Category Category { get; set; }
+        public Kitchen Kitchen { get; set; }
     }
 }
