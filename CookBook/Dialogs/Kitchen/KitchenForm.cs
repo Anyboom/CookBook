@@ -54,10 +54,17 @@ namespace CookBook.Dialogs.Kitchen
                 return;
             }
 
-            Models.Kitchen kichenForRemove = MainList.SelectedItem as Models.Kitchen;
+            using MainContext db = new MainContext();
+
+            Models.Kitchen kitchenForRemove = MainList.SelectedItem as Models.Kitchen;
+
+            if (db.Kitchens.Any(s => s.Id == kitchenForRemove.Id) == false)
+            {
+                return;
+            }
 
             DialogResult result = MessageService.ShowQuestion(
-                $"Вы точно собираетесь удалить кухню {kichenForRemove.Name} ?",
+                $"Вы точно собираетесь удалить кухню {kitchenForRemove.Name} ?",
                 MessageBoxButtons.YesNo);
 
             if (result == DialogResult.No)
@@ -65,9 +72,7 @@ namespace CookBook.Dialogs.Kitchen
                 return;
             }
 
-            using MainContext db = new MainContext();
-
-            db.Kitchens.Remove(kichenForRemove);
+            db.Kitchens.Remove(kitchenForRemove);
 
             db.SaveChanges();
 
@@ -81,6 +86,15 @@ namespace CookBook.Dialogs.Kitchen
                 return;
             }
 
+            using MainContext db = new MainContext();
+
+            Models.Kitchen kitchenForEdit = MainList.SelectedItem as Models.Kitchen;
+
+            if (db.Kitchens.Any(s => s.Id == kitchenForEdit.Id) == false)
+            {
+                return;
+            }
+
             string name = MessageService.InputBox("Введите новое имя для категории:");
 
             if (string.IsNullOrEmpty(name))
@@ -88,13 +102,9 @@ namespace CookBook.Dialogs.Kitchen
                 return;
             }
 
-            Models.Kitchen kichenForEdit = MainList.SelectedItem as Models.Kitchen;
+            kitchenForEdit.Name = name;
 
-            kichenForEdit.Name = name;
-
-            using MainContext db = new MainContext();
-
-            db.Kitchens.Update(kichenForEdit);
+            db.Kitchens.Update(kitchenForEdit);
 
             db.SaveChanges();
 

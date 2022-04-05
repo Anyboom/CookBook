@@ -54,7 +54,14 @@ namespace CookBook.Dialogs.Category
                 return;
             }
 
+            using MainContext db = new MainContext();
+
             Models.Category categoryForRemove = MainList.SelectedItem as Models.Category;
+
+            if (db.Categories.Any(s => s.Id == categoryForRemove.Id) == false)
+            {
+                return;
+            }
 
             DialogResult result = MessageService.ShowQuestion(
                 $"Вы точно собираетесь удалить категорию {categoryForRemove.Name} ?",
@@ -64,8 +71,6 @@ namespace CookBook.Dialogs.Category
             {
                 return;
             }
-
-            using MainContext db = new MainContext();
 
             db.Categories.Remove(categoryForRemove);
 
@@ -81,6 +86,15 @@ namespace CookBook.Dialogs.Category
                 return;
             }
 
+            using MainContext db = new MainContext();
+
+            Models.Category categoryForEdit = MainList.SelectedItem as Models.Category;
+
+            if (db.Categories.Any(s => s.Id == categoryForEdit.Id) == false)
+            {
+                return;
+            }
+
             string name = MessageService.InputBox("Введите новое имя для категории:");
 
             if (string.IsNullOrEmpty(name))
@@ -88,11 +102,7 @@ namespace CookBook.Dialogs.Category
                 return;
             }
 
-            Models.Category categoryForEdit = MainList.SelectedItem as Models.Category;
-
             categoryForEdit.Name = name;
-
-            using MainContext db = new MainContext();
 
             db.Categories.Update(categoryForEdit);
 
