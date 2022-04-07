@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CookBook.Instances;
+using CookBook.Models;
+using CookBook.Services;
 
 namespace CookBook.Dialogs.Authentication
 {
@@ -19,12 +22,38 @@ namespace CookBook.Dialogs.Authentication
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
+            string login = LoginTextBox.Text,
+                password = PasswordTextBox.Text;
 
-        }
+            if (String.IsNullOrEmpty(Name)
+                || String.IsNullOrEmpty(password))
+            {
+                MessageService.ShowError("Нужно что-нибудь ввести.");
+                return;
+            }
 
-        private void SignUpLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
+            using (MainContext db = new MainContext())
+            {
+                User temp = db.Users.Where(c => c.Login == login && c.DeletedAt == null).FirstOrDefault();
 
+                if (temp == null)
+                {
+                    MessageService.ShowWarn("Данного аккаунта с таким именем нет !");
+                    return;
+                }
+
+                if (MD5Service.Create(password) != temp.Password)
+                {
+                    MessageService.ShowWarn("Неправильный пароль.");
+                    return;
+                }
+
+                Variables.User = temp;
+
+                DialogResult = DialogResult.OK;
+            }
+
+            //TODO: CANCANCANCANCAN роли
         }
     }
 }

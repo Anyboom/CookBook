@@ -47,6 +47,7 @@ namespace CookBook
             this.AccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LoginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SignUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ShowDishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DishGrid)).BeginInit();
             this.MainContextMenu.SuspendLayout();
@@ -124,19 +125,21 @@ namespace CookBook
             // 
             this.MainContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddDishToolStripMenuItem,
+            this.ShowDishToolStripMenuItem,
             this.toolStripSeparator1,
             this.ShowCategoriesToolStripMenuItem,
             this.ShowKitchensToolStripMenuItem,
             this.toolStripSeparator2,
             this.UpdateTableToolStripMenuItem});
             this.MainContextMenu.Name = "MainContextMenu";
-            this.MainContextMenu.Size = new System.Drawing.Size(181, 126);
+            this.MainContextMenu.Size = new System.Drawing.Size(181, 148);
             // 
             // AddDishToolStripMenuItem
             // 
             this.AddDishToolStripMenuItem.Name = "AddDishToolStripMenuItem";
             this.AddDishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.AddDishToolStripMenuItem.Text = "Добавить блюдо";
+            this.AddDishToolStripMenuItem.Click += new System.EventHandler(this.AddDishToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
@@ -193,12 +196,21 @@ namespace CookBook
             this.LoginToolStripMenuItem.Name = "LoginToolStripMenuItem";
             this.LoginToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.LoginToolStripMenuItem.Text = "Авторизоваться";
+            this.LoginToolStripMenuItem.Click += new System.EventHandler(this.LoginToolStripMenuItem_Click);
             // 
             // SignUpToolStripMenuItem
             // 
             this.SignUpToolStripMenuItem.Name = "SignUpToolStripMenuItem";
             this.SignUpToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.SignUpToolStripMenuItem.Text = "Зарегистрироваться";
+            this.SignUpToolStripMenuItem.Click += new System.EventHandler(this.SignUpToolStripMenuItem_Click);
+            // 
+            // ShowDishToolStripMenuItem
+            // 
+            this.ShowDishToolStripMenuItem.Name = "ShowDishToolStripMenuItem";
+            this.ShowDishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ShowDishToolStripMenuItem.Text = "Открыть блюдо";
+            this.ShowDishToolStripMenuItem.Click += new System.EventHandler(this.ShowDishToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -242,6 +254,7 @@ namespace CookBook
         private System.Windows.Forms.ToolStripMenuItem ShowKitchensToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem UpdateTableToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ShowDishToolStripMenuItem;
     }
 }
 

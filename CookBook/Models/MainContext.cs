@@ -53,5 +53,7 @@ namespace CookBook.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<Kitchen> Kitchens { get; set; }
         public DbSet<Dish> Dishes { get; set; }
+        public DbSet<User> Users { get; set; }
     }
+
 }

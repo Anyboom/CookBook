@@ -30,13 +30,13 @@ namespace CookBook.Dialogs.Authentication
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.RepeatPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.RepeatPasswordLabel = new System.Windows.Forms.Label();
             this.SignUpButton = new System.Windows.Forms.Button();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.LoginTextBox = new System.Windows.Forms.TextBox();
             this.LoginLabel = new System.Windows.Forms.Label();
-            this.RepeatPasswordTextBox = new System.Windows.Forms.TextBox();
-            this.RepeatPasswordLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +56,23 @@ namespace CookBook.Dialogs.Authentication
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
+            // RepeatPasswordTextBox
+            // 
+            this.RepeatPasswordTextBox.Location = new System.Drawing.Point(13, 141);
+            this.RepeatPasswordTextBox.Name = "RepeatPasswordTextBox";
+            this.RepeatPasswordTextBox.PasswordChar = '*';
+            this.RepeatPasswordTextBox.Size = new System.Drawing.Size(211, 23);
+            this.RepeatPasswordTextBox.TabIndex = 7;
+            // 
+            // RepeatPasswordLabel
+            // 
+            this.RepeatPasswordLabel.AutoSize = true;
+            this.RepeatPasswordLabel.Location = new System.Drawing.Point(13, 123);
+            this.RepeatPasswordLabel.Name = "RepeatPasswordLabel";
+            this.RepeatPasswordLabel.Size = new System.Drawing.Size(112, 15);
+            this.RepeatPasswordLabel.TabIndex = 6;
+            this.RepeatPasswordLabel.Text = "Повторите пароль:";
+            // 
             // SignUpButton
             // 
             this.SignUpButton.Location = new System.Drawing.Point(85, 170);
@@ -64,12 +81,14 @@ namespace CookBook.Dialogs.Authentication
             this.SignUpButton.TabIndex = 4;
             this.SignUpButton.Text = "Зарегистрироваться";
             this.SignUpButton.UseVisualStyleBackColor = true;
+            this.SignUpButton.Click += new System.EventHandler(this.SignUpButton_Click);
             // 
             // PasswordTextBox
             // 
             this.PasswordTextBox.Location = new System.Drawing.Point(13, 90);
             this.PasswordTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
             this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(211, 23);
             this.PasswordTextBox.TabIndex = 3;
             // 
@@ -99,22 +118,6 @@ namespace CookBook.Dialogs.Authentication
             this.LoginLabel.TabIndex = 0;
             this.LoginLabel.Text = "Логин:";
             // 
-            // RepeatPasswordTextBox
-            // 
-            this.RepeatPasswordTextBox.Location = new System.Drawing.Point(13, 141);
-            this.RepeatPasswordTextBox.Name = "RepeatPasswordTextBox";
-            this.RepeatPasswordTextBox.Size = new System.Drawing.Size(211, 23);
-            this.RepeatPasswordTextBox.TabIndex = 7;
-            // 
-            // RepeatPasswordLabel
-            // 
-            this.RepeatPasswordLabel.AutoSize = true;
-            this.RepeatPasswordLabel.Location = new System.Drawing.Point(13, 123);
-            this.RepeatPasswordLabel.Name = "RepeatPasswordLabel";
-            this.RepeatPasswordLabel.Size = new System.Drawing.Size(112, 15);
-            this.RepeatPasswordLabel.TabIndex = 6;
-            this.RepeatPasswordLabel.Text = "Повторите пароль:";
-            // 
             // SignUpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -125,6 +128,7 @@ namespace CookBook.Dialogs.Authentication
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SignUpForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Регистрация";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

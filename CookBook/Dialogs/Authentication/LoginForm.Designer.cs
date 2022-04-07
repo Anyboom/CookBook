@@ -30,18 +30,16 @@ namespace CookBook.Dialogs.Authentication
         private void InitializeComponent()
         {
             this.MainGroup = new System.Windows.Forms.GroupBox();
-            this.LoginLabel = new System.Windows.Forms.Label();
-            this.LoginTextBox = new System.Windows.Forms.TextBox();
+            this.LoginButton = new System.Windows.Forms.Button();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.PasswordLabel = new System.Windows.Forms.Label();
-            this.LoginButton = new System.Windows.Forms.Button();
-            this.SignUpLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.LoginTextBox = new System.Windows.Forms.TextBox();
+            this.LoginLabel = new System.Windows.Forms.Label();
             this.MainGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainGroup
             // 
-            this.MainGroup.Controls.Add(this.SignUpLinkLabel);
             this.MainGroup.Controls.Add(this.LoginButton);
             this.MainGroup.Controls.Add(this.PasswordTextBox);
             this.MainGroup.Controls.Add(this.PasswordLabel);
@@ -54,27 +52,21 @@ namespace CookBook.Dialogs.Authentication
             this.MainGroup.TabIndex = 0;
             this.MainGroup.TabStop = false;
             // 
-            // LoginLabel
+            // LoginButton
             // 
-            this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Location = new System.Drawing.Point(13, 21);
-            this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(44, 15);
-            this.LoginLabel.TabIndex = 0;
-            this.LoginLabel.Text = "Логин:";
-            // 
-            // LoginTextBox
-            // 
-            this.LoginTextBox.Location = new System.Drawing.Point(13, 39);
-            this.LoginTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
-            this.LoginTextBox.Name = "LoginTextBox";
-            this.LoginTextBox.Size = new System.Drawing.Size(211, 23);
-            this.LoginTextBox.TabIndex = 1;
+            this.LoginButton.Location = new System.Drawing.Point(149, 121);
+            this.LoginButton.Name = "LoginButton";
+            this.LoginButton.Size = new System.Drawing.Size(75, 23);
+            this.LoginButton.TabIndex = 4;
+            this.LoginButton.Text = "Войти";
+            this.LoginButton.UseVisualStyleBackColor = true;
+            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // PasswordTextBox
             // 
             this.PasswordTextBox.Location = new System.Drawing.Point(13, 90);
             this.PasswordTextBox.Name = "PasswordTextBox";
+            this.PasswordTextBox.PasswordChar = '*';
             this.PasswordTextBox.Size = new System.Drawing.Size(211, 23);
             this.PasswordTextBox.TabIndex = 3;
             // 
@@ -87,26 +79,22 @@ namespace CookBook.Dialogs.Authentication
             this.PasswordLabel.TabIndex = 2;
             this.PasswordLabel.Text = "Пароль:";
             // 
-            // LoginButton
+            // LoginTextBox
             // 
-            this.LoginButton.Location = new System.Drawing.Point(149, 121);
-            this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(75, 23);
-            this.LoginButton.TabIndex = 4;
-            this.LoginButton.Text = "Войти";
-            this.LoginButton.UseVisualStyleBackColor = true;
-            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
+            this.LoginTextBox.Location = new System.Drawing.Point(13, 39);
+            this.LoginTextBox.Margin = new System.Windows.Forms.Padding(3, 3, 3, 10);
+            this.LoginTextBox.Name = "LoginTextBox";
+            this.LoginTextBox.Size = new System.Drawing.Size(211, 23);
+            this.LoginTextBox.TabIndex = 1;
             // 
-            // SignUpLinkLabel
+            // LoginLabel
             // 
-            this.SignUpLinkLabel.AutoSize = true;
-            this.SignUpLinkLabel.Location = new System.Drawing.Point(13, 125);
-            this.SignUpLinkLabel.Name = "SignUpLinkLabel";
-            this.SignUpLinkLabel.Size = new System.Drawing.Size(119, 15);
-            this.SignUpLinkLabel.TabIndex = 5;
-            this.SignUpLinkLabel.TabStop = true;
-            this.SignUpLinkLabel.Text = "Зарегистрироваться";
-            this.SignUpLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.SignUpLinkLabel_LinkClicked);
+            this.LoginLabel.AutoSize = true;
+            this.LoginLabel.Location = new System.Drawing.Point(13, 21);
+            this.LoginLabel.Name = "LoginLabel";
+            this.LoginLabel.Size = new System.Drawing.Size(44, 15);
+            this.LoginLabel.TabIndex = 0;
+            this.LoginLabel.Text = "Логин:";
             // 
             // LoginForm
             // 
@@ -118,6 +106,7 @@ namespace CookBook.Dialogs.Authentication
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Авторизация";
             this.MainGroup.ResumeLayout(false);
             this.MainGroup.PerformLayout();
@@ -133,6 +122,5 @@ namespace CookBook.Dialogs.Authentication
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.TextBox LoginTextBox;
         private System.Windows.Forms.Label LoginLabel;
-        private System.Windows.Forms.LinkLabel SignUpLinkLabel;
     }
 }

@@ -7,7 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CookBook.Dialogs.Authentication;
 using CookBook.Dialogs.Category;
+using CookBook.Dialogs.Dish;
 using CookBook.Dialogs.Kitchen;
 using CookBook.Models;
 
@@ -49,16 +51,7 @@ namespace CookBook
                 query = query.Where(s => s.KitchenId == (int) KitchenCombo.SelectedValue);
             }
 
-            DishGrid.DataSource = query.Select(s => new
-            {
-                s.Id,
-                s.KitchenId,
-                s.CategoryId,
-                s.Title,
-                KitchenName = s.Kitchen.Name,
-                CategoryName = s.Category.Name
-            }).ToList();
-            
+            DishGrid.DataSource = query.Select(s => new { s.Id, s.KitchenId, s.CategoryId, s.Title, KitchenName = s.Kitchen.Name, CategoryName = s.Category.Name }).ToList();
         }
 
         private void DishGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -70,6 +63,7 @@ namespace CookBook
 
             DishGrid.Columns["KitchenId"].Visible = false;
             DishGrid.Columns["CategoryId"].Visible = false;
+
         }
 
         private void ShowCategoriesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -96,6 +90,42 @@ namespace CookBook
             {
                 KitchenCombo.DataSource = db.Kitchens.ToList();
             }
+        }
+
+        private void AddDishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (KitchenCombo.Items.Count == 0 || CategoryCombo.Items.Count == 0)
+            {
+                //TODO: message плииз
+                return;
+            }
+
+            AddDishForm newDialogForm = new AddDishForm();
+            DialogResult result = newDialogForm.ShowDialog();
+        }
+
+        private void LoginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            LoginForm newDialogForm = new LoginForm();
+            DialogResult result = newDialogForm.ShowDialog();
+
+            if (DialogResult.OK == result)
+            {
+                AccountToolStripMenuItem.Text = Variables.User.Login;
+                //TODO: ОБРАБОТКА ВЫХОДА И ВХОДА ЭЛЕМЕНТАМИ ПЛИИИЗ
+            }
+        }
+
+        private void SignUpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SignUpForm newDialogForm = new SignUpForm();
+            DialogResult result = newDialogForm.ShowDialog();
+        }
+
+        private void ShowDishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ShowDishForm newShowDishForm = new ShowDishForm((int) DishGrid.SelectedRows[0].Cells[0].Value);
+            DialogResult result = newShowDishForm.ShowDialog();
         }
     }
 }

@@ -30,15 +30,15 @@ namespace CookBook.Dialogs.Dish
         private void InitializeComponent()
         {
             this.MainGroup = new System.Windows.Forms.GroupBox();
+            this.AddButton = new System.Windows.Forms.Button();
+            this.RecipeLabel = new System.Windows.Forms.Label();
+            this.RecipeTextBox = new System.Windows.Forms.TextBox();
+            this.TitleTextBox = new System.Windows.Forms.TextBox();
+            this.TitleLabel = new System.Windows.Forms.Label();
             this.CategoryLabel = new System.Windows.Forms.Label();
             this.CategoryCombo = new System.Windows.Forms.ComboBox();
             this.KitchenCombo = new System.Windows.Forms.ComboBox();
             this.KitchenLabel = new System.Windows.Forms.Label();
-            this.TitleLabel = new System.Windows.Forms.Label();
-            this.TitleTextBox = new System.Windows.Forms.TextBox();
-            this.RecipeTextBox = new System.Windows.Forms.TextBox();
-            this.RecipeLabel = new System.Windows.Forms.Label();
-            this.AddButton = new System.Windows.Forms.Button();
             this.MainGroup.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,6 +59,48 @@ namespace CookBook.Dialogs.Dish
             this.MainGroup.Size = new System.Drawing.Size(360, 437);
             this.MainGroup.TabIndex = 0;
             this.MainGroup.TabStop = false;
+            // 
+            // AddButton
+            // 
+            this.AddButton.Location = new System.Drawing.Point(272, 401);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(75, 23);
+            this.AddButton.TabIndex = 8;
+            this.AddButton.Text = "Добавить";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
+            // 
+            // RecipeLabel
+            // 
+            this.RecipeLabel.Location = new System.Drawing.Point(13, 102);
+            this.RecipeLabel.Name = "RecipeLabel";
+            this.RecipeLabel.Size = new System.Drawing.Size(62, 55);
+            this.RecipeLabel.TabIndex = 7;
+            this.RecipeLabel.Text = "Рецепт приготовления:";
+            // 
+            // RecipeTextBox
+            // 
+            this.RecipeTextBox.Location = new System.Drawing.Point(81, 102);
+            this.RecipeTextBox.Multiline = true;
+            this.RecipeTextBox.Name = "RecipeTextBox";
+            this.RecipeTextBox.Size = new System.Drawing.Size(266, 293);
+            this.RecipeTextBox.TabIndex = 6;
+            // 
+            // TitleTextBox
+            // 
+            this.TitleTextBox.Location = new System.Drawing.Point(81, 73);
+            this.TitleTextBox.Name = "TitleTextBox";
+            this.TitleTextBox.Size = new System.Drawing.Size(266, 23);
+            this.TitleTextBox.TabIndex = 5;
+            // 
+            // TitleLabel
+            // 
+            this.TitleLabel.AutoSize = true;
+            this.TitleLabel.Location = new System.Drawing.Point(13, 76);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(62, 15);
+            this.TitleLabel.TabIndex = 4;
+            this.TitleLabel.Text = "Название:";
             // 
             // CategoryLabel
             // 
@@ -96,48 +138,6 @@ namespace CookBook.Dialogs.Dish
             this.KitchenLabel.TabIndex = 0;
             this.KitchenLabel.Text = "Кухня:";
             // 
-            // TitleLabel
-            // 
-            this.TitleLabel.AutoSize = true;
-            this.TitleLabel.Location = new System.Drawing.Point(13, 76);
-            this.TitleLabel.Name = "TitleLabel";
-            this.TitleLabel.Size = new System.Drawing.Size(62, 15);
-            this.TitleLabel.TabIndex = 4;
-            this.TitleLabel.Text = "Название:";
-            // 
-            // TitleTextBox
-            // 
-            this.TitleTextBox.Location = new System.Drawing.Point(81, 73);
-            this.TitleTextBox.Name = "TitleTextBox";
-            this.TitleTextBox.Size = new System.Drawing.Size(266, 23);
-            this.TitleTextBox.TabIndex = 5;
-            // 
-            // RecipeTextBox
-            // 
-            this.RecipeTextBox.Location = new System.Drawing.Point(81, 102);
-            this.RecipeTextBox.Multiline = true;
-            this.RecipeTextBox.Name = "RecipeTextBox";
-            this.RecipeTextBox.Size = new System.Drawing.Size(266, 293);
-            this.RecipeTextBox.TabIndex = 6;
-            // 
-            // RecipeLabel
-            // 
-            this.RecipeLabel.Location = new System.Drawing.Point(13, 102);
-            this.RecipeLabel.Name = "RecipeLabel";
-            this.RecipeLabel.Size = new System.Drawing.Size(62, 55);
-            this.RecipeLabel.TabIndex = 7;
-            this.RecipeLabel.Text = "Рецепт приготовления:";
-            // 
-            // AddButton
-            // 
-            this.AddButton.Location = new System.Drawing.Point(272, 401);
-            this.AddButton.Name = "AddButton";
-            this.AddButton.Size = new System.Drawing.Size(75, 23);
-            this.AddButton.TabIndex = 8;
-            this.AddButton.Text = "Добавить";
-            this.AddButton.UseVisualStyleBackColor = true;
-            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
-            // 
             // AddDishForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -146,7 +146,7 @@ namespace CookBook.Dialogs.Dish
             this.Controls.Add(this.MainGroup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AddDishForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ActionDishForm";
             this.Load += new System.EventHandler(this.AddDishForm_Load);
             this.MainGroup.ResumeLayout(false);
