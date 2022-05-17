@@ -29,6 +29,7 @@ namespace CookBook.Dialogs.Dish
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddDishForm));
             this.MainGroup = new System.Windows.Forms.GroupBox();
             this.AddButton = new System.Windows.Forms.Button();
             this.RecipeLabel = new System.Windows.Forms.Label();
@@ -144,10 +145,11 @@ namespace CookBook.Dialogs.Dish
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 461);
             this.Controls.Add(this.MainGroup);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AddDishForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ActionDishForm";
+            this.Text = "Добавление рецепта";
             this.Load += new System.EventHandler(this.AddDishForm_Load);
             this.MainGroup.ResumeLayout(false);
             this.MainGroup.PerformLayout();

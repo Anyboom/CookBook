@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CookBook.Models;
+using CookBook.Services;
 
 namespace CookBook.Dialogs.Dish
 {
@@ -35,23 +36,15 @@ namespace CookBook.Dialogs.Dish
         {
             //TODO: доделать валидацию
 
-            if (CategoryCombo.SelectedValue is null)
-            {
-                return;
-            }
-
-            if (KitchenCombo.SelectedValue is null)
-            {
-                return;
-            }
-
             if (string.IsNullOrEmpty(RecipeTextBox.Text))
             {
+                MessageService.ShowWarn("Заполните рецепт продукта.");
                 return;
             }
 
             if (string.IsNullOrEmpty(TitleTextBox.Text))
             {
+                MessageService.ShowWarn("Заполните название продукта.");
                 return;
             }
 
@@ -62,7 +55,8 @@ namespace CookBook.Dialogs.Dish
                 CategoryId = (int) CategoryCombo.SelectedValue,
                 KitchenId = (int) KitchenCombo.SelectedValue,
                 Recipe = RecipeTextBox.Text,
-                Title = TitleTextBox.Text
+                Title = TitleTextBox.Text,
+                UserId = Variables.User.Id
             };
 
             db.Dishes.Add(newDish);

@@ -15,5 +15,7 @@ namespace CookBook.Models
         public Category Category { get; set; }
         public int KitchenId { get; set; }
         public Kitchen Kitchen { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }

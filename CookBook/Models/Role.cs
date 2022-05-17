@@ -11,48 +11,60 @@ namespace CookBook.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
+
+        private static Dictionary<string, string[]> areas = new Dictionary<string, string[]>()
+        {
+            {
+                "MainForm.Logout", new []
+                {
+                    "user", "admin"
+                }
+            },
+            {
+                "MainForm.Login", new []
+                {
+                    "guest"
+                }
+            },
+            {
+                "MainForm.SignUp", new []
+                {
+                    "guest"
+                }
+            },
+            {
+                "MainForm.AddDish", new []
+                {
+                    "user", "admin"
+                }
+            },
+            {
+                "MainForm.ShowCategories", new []
+                {
+                    "admin"
+                }
+            },
+            {
+                "MainForm.ShowKitchens", new []
+                {
+                    "admin"
+                }
+            },
+            {
+                "MainForm.EditDish", new []
+                {
+                    "user", "admin"
+                }
+            },
+            {
+                "MainForm.FirstSeparator", new []
+                {
+                    "admin"
+                }
+            }
+        };
         public static bool Can(User user, string area)
         {
-            Dictionary<string, string[]> areas = new Dictionary<string, string[]>()
-            {
-                {
-                    "MainForm.Logout", new []
-                    {
-                        "user", "admin"
-                    }
-                },
-                {
-                    "MainForm.Login", new []
-                    {
-                        "guest"
-                    }
-                },
-                {
-                    "MainForm.SignUp", new []
-                    {
-                        "guest"
-                    }
-                },
-                {
-                    "MainForm.AddDish", new []
-                    {
-                        "user", "admin"
-                    }
-                },
-                {
-                    "MainForm.ShowCategories", new []
-                    {
-                        "admin"
-                    }
-                },
-                {
-                    "MainForm.ShowKitchens", new []
-                    {
-                        "admin"
-                    }
-                }
-            };
-
             string role = "guest";
 
             if (user is not null)

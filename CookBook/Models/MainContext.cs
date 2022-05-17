@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CookBook.Services;
 
 namespace CookBook.Models
 {
@@ -43,12 +44,23 @@ namespace CookBook.Models
 
             //SaveChanges();
 
+            //Users.Add(new User()
+            //{
+            //    Login = "login",
+            //    Password = MD5Service.Create("admin"),
+            //    CreatedAt = DateTime.Now,
+            //    Role = Roles.First(c => c.Name == "Admin")
+            //});
+
+            //SaveChanges();
+
             //Dishes.Add(new Dish()
             //{
             //    Title = "Сырная",
             //    Recipe = "Томатный соус, сыр моццарела, смесь сыров",
             //    CategoryId = 1,
-            //    KitchenId = 1
+            //    KitchenId = 1,
+            //    User = Users.First()
             //});
 
             //SaveChanges();

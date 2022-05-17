@@ -29,13 +29,14 @@ namespace CookBook.Dialogs.Dish
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ShowDishForm));
             this.MainGroup = new System.Windows.Forms.GroupBox();
-            this.KitchenLabel = new System.Windows.Forms.Label();
-            this.CategoryLabel = new System.Windows.Forms.Label();
-            this.RecipeLabel = new System.Windows.Forms.Label();
-            this.KitchenResultLabel = new System.Windows.Forms.Label();
-            this.CategoryResultLabel = new System.Windows.Forms.Label();
             this.RecipeTextBox = new System.Windows.Forms.TextBox();
+            this.CategoryResultLabel = new System.Windows.Forms.Label();
+            this.KitchenResultLabel = new System.Windows.Forms.Label();
+            this.RecipeLabel = new System.Windows.Forms.Label();
+            this.CategoryLabel = new System.Windows.Forms.Label();
+            this.KitchenLabel = new System.Windows.Forms.Label();
             this.MainGroup.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,25 +55,32 @@ namespace CookBook.Dialogs.Dish
             this.MainGroup.TabIndex = 0;
             this.MainGroup.TabStop = false;
             // 
-            // KitchenLabel
+            // RecipeTextBox
             // 
-            this.KitchenLabel.AutoSize = true;
-            this.KitchenLabel.Location = new System.Drawing.Point(13, 26);
-            this.KitchenLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 5);
-            this.KitchenLabel.Name = "KitchenLabel";
-            this.KitchenLabel.Size = new System.Drawing.Size(42, 15);
-            this.KitchenLabel.TabIndex = 0;
-            this.KitchenLabel.Text = "Кухня:";
+            this.RecipeTextBox.Location = new System.Drawing.Point(13, 89);
+            this.RecipeTextBox.Multiline = true;
+            this.RecipeTextBox.Name = "RecipeTextBox";
+            this.RecipeTextBox.ReadOnly = true;
+            this.RecipeTextBox.Size = new System.Drawing.Size(334, 335);
+            this.RecipeTextBox.TabIndex = 5;
             // 
-            // CategoryLabel
+            // CategoryResultLabel
             // 
-            this.CategoryLabel.AutoSize = true;
-            this.CategoryLabel.Location = new System.Drawing.Point(13, 46);
-            this.CategoryLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 5);
-            this.CategoryLabel.Name = "CategoryLabel";
-            this.CategoryLabel.Size = new System.Drawing.Size(66, 15);
-            this.CategoryLabel.TabIndex = 1;
-            this.CategoryLabel.Text = "Категория:";
+            this.CategoryResultLabel.Location = new System.Drawing.Point(79, 46);
+            this.CategoryResultLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.CategoryResultLabel.Name = "CategoryResultLabel";
+            this.CategoryResultLabel.Size = new System.Drawing.Size(268, 15);
+            this.CategoryResultLabel.TabIndex = 4;
+            this.CategoryResultLabel.Text = "Закуски";
+            // 
+            // KitchenResultLabel
+            // 
+            this.KitchenResultLabel.Location = new System.Drawing.Point(55, 26);
+            this.KitchenResultLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.KitchenResultLabel.Name = "KitchenResultLabel";
+            this.KitchenResultLabel.Size = new System.Drawing.Size(292, 15);
+            this.KitchenResultLabel.TabIndex = 3;
+            this.KitchenResultLabel.Text = "Русская";
             // 
             // RecipeLabel
             // 
@@ -84,32 +92,25 @@ namespace CookBook.Dialogs.Dish
             this.RecipeLabel.TabIndex = 2;
             this.RecipeLabel.Text = "Рецепт:";
             // 
-            // KitchenResultLabel
+            // CategoryLabel
             // 
-            this.KitchenResultLabel.Location = new System.Drawing.Point(55, 26);
-            this.KitchenResultLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.KitchenResultLabel.Name = "KitchenResultLabel";
-            this.KitchenResultLabel.Size = new System.Drawing.Size(292, 15);
-            this.KitchenResultLabel.TabIndex = 3;
-            this.KitchenResultLabel.Text = "Русская";
+            this.CategoryLabel.AutoSize = true;
+            this.CategoryLabel.Location = new System.Drawing.Point(13, 46);
+            this.CategoryLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 5);
+            this.CategoryLabel.Name = "CategoryLabel";
+            this.CategoryLabel.Size = new System.Drawing.Size(66, 15);
+            this.CategoryLabel.TabIndex = 1;
+            this.CategoryLabel.Text = "Категория:";
             // 
-            // CategoryResultLabel
+            // KitchenLabel
             // 
-            this.CategoryResultLabel.Location = new System.Drawing.Point(79, 46);
-            this.CategoryResultLabel.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.CategoryResultLabel.Name = "CategoryResultLabel";
-            this.CategoryResultLabel.Size = new System.Drawing.Size(268, 15);
-            this.CategoryResultLabel.TabIndex = 4;
-            this.CategoryResultLabel.Text = "Закуски";
-            // 
-            // RecipeTextBox
-            // 
-            this.RecipeTextBox.Location = new System.Drawing.Point(13, 89);
-            this.RecipeTextBox.Multiline = true;
-            this.RecipeTextBox.Name = "RecipeTextBox";
-            this.RecipeTextBox.ReadOnly = true;
-            this.RecipeTextBox.Size = new System.Drawing.Size(334, 335);
-            this.RecipeTextBox.TabIndex = 5;
+            this.KitchenLabel.AutoSize = true;
+            this.KitchenLabel.Location = new System.Drawing.Point(13, 26);
+            this.KitchenLabel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 5);
+            this.KitchenLabel.Name = "KitchenLabel";
+            this.KitchenLabel.Size = new System.Drawing.Size(42, 15);
+            this.KitchenLabel.TabIndex = 0;
+            this.KitchenLabel.Text = "Кухня:";
             // 
             // ShowDishForm
             // 
@@ -118,6 +119,7 @@ namespace CookBook.Dialogs.Dish
             this.ClientSize = new System.Drawing.Size(384, 461);
             this.Controls.Add(this.MainGroup);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ShowDishForm";

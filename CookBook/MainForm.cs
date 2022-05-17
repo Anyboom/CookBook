@@ -12,6 +12,7 @@ using CookBook.Dialogs.Category;
 using CookBook.Dialogs.Dish;
 using CookBook.Dialogs.Kitchen;
 using CookBook.Models;
+using CookBook.Services;
 
 namespace CookBook
 {
@@ -98,7 +99,7 @@ namespace CookBook
         {
             if (KitchenCombo.Items.Count == 0 || CategoryCombo.Items.Count == 0)
             {
-                //TODO: message плииз
+                MessageService.ShowError("Не заполнены данные в таблице 'Кухня' или 'Категория'");
                 return;
             }
 
@@ -127,8 +128,14 @@ namespace CookBook
 
         private void ShowDishToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //BUG: обработать 
-            ShowDishForm newShowDishForm = new ShowDishForm((int) DishGrid.SelectedRows[0].Cells[0].Value);
+            if (DishGrid.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            int selectedId = (int)DishGrid.SelectedRows[0].Cells[0].Value;
+
+            ShowDishForm newShowDishForm = new ShowDishForm(selectedId);
             DialogResult result = newShowDishForm.ShowDialog();
         }
 
@@ -150,8 +157,11 @@ namespace CookBook
             AddDishToolStripMenuItem.Visible = Role.Can(Variables.User, "MainForm.AddDish");
 
             ShowCategoriesToolStripMenuItem.Visible = Role.Can(Variables.User, "MainForm.ShowCategories");
-            ShowKitchensToolStripMenuItem.Visible = Role.Can(Variables.User, "MainForm.ShowCategories");
-            //BUG: поработать с разделителями
+            ShowKitchensToolStripMenuItem.Visible = Role.Can(Variables.User, "MainForm.ShowKitchens");
+
+            FirstSeparator.Visible = Role.Can(Variables.User, "MainForm.FirstSeparator");
+
+            EditDishToolStripMenuItem.Visible = Role.Can(Variables.User, "MainForm.EditDish");
         }
 
         private void KitchenCheck_CheckedChanged(object sender, EventArgs e)
@@ -162,6 +172,27 @@ namespace CookBook
         private void CategoryCheck_CheckedChanged(object sender, EventArgs e)
         {
             CategoryCombo.Enabled = CategoryCheck.Checked;
+        }
+
+        private void EditDishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (DishGrid.SelectedRows.Count == 0)
+            {
+                return;
+            }
+
+            int selectedId = (int) DishGrid.SelectedRows[0].Cells[0].Value;
+
+            using MainContext db = new MainContext();
+
+            if (db.Dishes.Any(c => c.Id == selectedId && c.User.Id == Variables.User.Id) || Variables.User.Role.Name == "Admin")
+            {
+                MessageService.ShowInfo("true");
+            }
+            else
+            {
+                MessageService.ShowInfo("false");
+            }
         }
     }
 }

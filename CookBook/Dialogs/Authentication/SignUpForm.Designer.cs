@@ -29,6 +29,7 @@ namespace CookBook.Dialogs.Authentication
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SignUpForm));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.RepeatPasswordTextBox = new System.Windows.Forms.TextBox();
             this.RepeatPasswordLabel = new System.Windows.Forms.Label();
@@ -125,6 +126,7 @@ namespace CookBook.Dialogs.Authentication
             this.ClientSize = new System.Drawing.Size(258, 230);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SignUpForm";

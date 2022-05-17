@@ -35,7 +35,7 @@ namespace CookBook.Dialogs.Authentication
 
             using (MainContext db = new MainContext())
             {
-                User temp = db.Users.Include(c => c.Role).Where(c => c.Login == login && c.DeletedAt == null).FirstOrDefault();
+                User temp = db.Users.Include(c => c.Dishes).Include(c => c.Role).Where(c => c.Login == login && c.DeletedAt == null).FirstOrDefault();
 
                 if (temp == null)
                 {
@@ -53,8 +53,6 @@ namespace CookBook.Dialogs.Authentication
 
                 DialogResult = DialogResult.OK;
             }
-
-            //TODO: CANCANCANCANCAN роли
         }
     }
 }
