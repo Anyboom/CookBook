@@ -31,6 +31,16 @@ namespace CookBook.Models
             //    Name = "Русская"
             //});
 
+            //Roles.Add(new Role()
+            //{
+            //    Name = "User"
+            //});
+
+            //Roles.Add(new Role()
+            //{
+            //    Name = "Admin"
+            //});
+
             //SaveChanges();
 
             //Dishes.Add(new Dish()
@@ -54,6 +64,7 @@ namespace CookBook.Models
         public DbSet<Kitchen> Kitchens { get; set; }
         public DbSet<Dish> Dishes { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
     }
 
 }

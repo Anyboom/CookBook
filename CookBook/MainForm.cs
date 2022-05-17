@@ -33,6 +33,8 @@ namespace CookBook
             CategoryCombo.DisplayMember = "Name";
             CategoryCombo.ValueMember = "Id";
 
+            UpdateView();
+
         }
 
         private void UpdateTableToolStripMenuItem_Click(object sender, EventArgs e)
@@ -112,7 +114,8 @@ namespace CookBook
             if (DialogResult.OK == result)
             {
                 AccountToolStripMenuItem.Text = Variables.User.Login;
-                //TODO: ОБРАБОТКА ВЫХОДА И ВХОДА ЭЛЕМЕНТАМИ ПЛИИИЗ
+
+                UpdateView();
             }
         }
 
@@ -124,8 +127,41 @@ namespace CookBook
 
         private void ShowDishToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //BUG: обработать 
             ShowDishForm newShowDishForm = new ShowDishForm((int) DishGrid.SelectedRows[0].Cells[0].Value);
             DialogResult result = newShowDishForm.ShowDialog();
+        }
+
+        private void LogoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Variables.User = null;
+
+            AccountToolStripMenuItem.Text = "Аккаунт";
+
+            UpdateView();
+        }
+
+        private void UpdateView()
+        {
+            LoginToolStripMenuItem.Visible = Role.Can(Variables.User, "MainForm.Login");
+            SignUpToolStripMenuItem.Visible = Role.Can(Variables.User, "MainForm.SignUp");
+            LogoutToolStripMenuItem.Visible = Role.Can(Variables.User, "MainForm.Logout");
+
+            AddDishToolStripMenuItem.Visible = Role.Can(Variables.User, "MainForm.AddDish");
+
+            ShowCategoriesToolStripMenuItem.Visible = Role.Can(Variables.User, "MainForm.ShowCategories");
+            ShowKitchensToolStripMenuItem.Visible = Role.Can(Variables.User, "MainForm.ShowCategories");
+            //BUG: поработать с разделителями
+        }
+
+        private void KitchenCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            KitchenCombo.Enabled = KitchenCheck.Checked;
+        }
+
+        private void CategoryCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            CategoryCombo.Enabled = CategoryCheck.Checked;
         }
     }
 }

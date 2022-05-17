@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using CookBook.Instances;
 using CookBook.Models;
 using CookBook.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace CookBook.Dialogs.Authentication
 {
@@ -34,7 +35,7 @@ namespace CookBook.Dialogs.Authentication
 
             using (MainContext db = new MainContext())
             {
-                User temp = db.Users.Where(c => c.Login == login && c.DeletedAt == null).FirstOrDefault();
+                User temp = db.Users.Include(c => c.Role).Where(c => c.Login == login && c.DeletedAt == null).FirstOrDefault();
 
                 if (temp == null)
                 {

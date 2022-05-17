@@ -45,11 +45,14 @@ namespace CookBook.Dialogs.Authentication
                 return;
             }
 
+            string newRole = db.Users.Any() ? "User" : "Admin";
+
             db.Users.Add(new User()
             {
                 Login = login,
                 Password = MD5Service.Create(password),
-                CreatedAt = DateTime.Now
+                CreatedAt = DateTime.Now,
+                Role = db.Roles.First(c => c.Name == newRole)
             });
 
             db.SaveChanges();

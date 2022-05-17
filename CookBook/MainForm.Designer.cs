@@ -1,4 +1,6 @@
 ﻿
+using CookBook.Models;
+
 namespace CookBook
 {
     partial class MainForm
@@ -38,16 +40,15 @@ namespace CookBook
             this.DishGrid = new System.Windows.Forms.DataGridView();
             this.MainContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.AddDishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ShowDishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ShowCategoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ShowKitchensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.UpdateTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainMenu = new System.Windows.Forms.MenuStrip();
             this.AccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.LoginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SignUpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ShowDishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.LogoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.MainBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DishGrid)).BeginInit();
             this.MainContextMenu.SuspendLayout();
@@ -76,10 +77,12 @@ namespace CookBook
             this.CategoryCheck.TabIndex = 9;
             this.CategoryCheck.Text = "Категория:";
             this.CategoryCheck.UseVisualStyleBackColor = true;
+            this.CategoryCheck.CheckedChanged += new System.EventHandler(this.CategoryCheck_CheckedChanged);
             // 
             // CategoryCombo
             // 
             this.CategoryCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CategoryCombo.Enabled = false;
             this.CategoryCombo.FormattingEnabled = true;
             this.CategoryCombo.Location = new System.Drawing.Point(104, 46);
             this.CategoryCombo.Name = "CategoryCombo";
@@ -94,10 +97,12 @@ namespace CookBook
             this.KitchenCheck.TabIndex = 6;
             this.KitchenCheck.Text = "Кухня:";
             this.KitchenCheck.UseVisualStyleBackColor = true;
+            this.KitchenCheck.CheckedChanged += new System.EventHandler(this.KitchenCheck_CheckedChanged);
             // 
             // KitchenCombo
             // 
             this.KitchenCombo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.KitchenCombo.Enabled = false;
             this.KitchenCombo.FormattingEnabled = true;
             this.KitchenCombo.Location = new System.Drawing.Point(104, 19);
             this.KitchenCombo.Name = "KitchenCombo";
@@ -126,25 +131,26 @@ namespace CookBook
             this.MainContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddDishToolStripMenuItem,
             this.ShowDishToolStripMenuItem,
-            this.toolStripSeparator1,
             this.ShowCategoriesToolStripMenuItem,
             this.ShowKitchensToolStripMenuItem,
-            this.toolStripSeparator2,
             this.UpdateTableToolStripMenuItem});
             this.MainContextMenu.Name = "MainContextMenu";
-            this.MainContextMenu.Size = new System.Drawing.Size(181, 148);
+            this.MainContextMenu.Size = new System.Drawing.Size(181, 136);
             // 
             // AddDishToolStripMenuItem
             // 
             this.AddDishToolStripMenuItem.Name = "AddDishToolStripMenuItem";
             this.AddDishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.AddDishToolStripMenuItem.Text = "Добавить блюдо";
+            this.AddDishToolStripMenuItem.Visible = false;
             this.AddDishToolStripMenuItem.Click += new System.EventHandler(this.AddDishToolStripMenuItem_Click);
             // 
-            // toolStripSeparator1
+            // ShowDishToolStripMenuItem
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.ShowDishToolStripMenuItem.Name = "ShowDishToolStripMenuItem";
+            this.ShowDishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ShowDishToolStripMenuItem.Text = "Открыть блюдо";
+            this.ShowDishToolStripMenuItem.Click += new System.EventHandler(this.ShowDishToolStripMenuItem_Click);
             // 
             // ShowCategoriesToolStripMenuItem
             // 
@@ -159,11 +165,6 @@ namespace CookBook
             this.ShowKitchensToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ShowKitchensToolStripMenuItem.Text = "Открыть кухни";
             this.ShowKitchensToolStripMenuItem.Click += new System.EventHandler(this.ShowKitchensToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
             // UpdateTableToolStripMenuItem
             // 
@@ -186,7 +187,8 @@ namespace CookBook
             // 
             this.AccountToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.LoginToolStripMenuItem,
-            this.SignUpToolStripMenuItem});
+            this.SignUpToolStripMenuItem,
+            this.LogoutToolStripMenuItem});
             this.AccountToolStripMenuItem.Name = "AccountToolStripMenuItem";
             this.AccountToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.AccountToolStripMenuItem.Text = "Аккаунт";
@@ -205,12 +207,13 @@ namespace CookBook
             this.SignUpToolStripMenuItem.Text = "Зарегистрироваться";
             this.SignUpToolStripMenuItem.Click += new System.EventHandler(this.SignUpToolStripMenuItem_Click);
             // 
-            // ShowDishToolStripMenuItem
+            // LogoutToolStripMenuItem
             // 
-            this.ShowDishToolStripMenuItem.Name = "ShowDishToolStripMenuItem";
-            this.ShowDishToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.ShowDishToolStripMenuItem.Text = "Открыть блюдо";
-            this.ShowDishToolStripMenuItem.Click += new System.EventHandler(this.ShowDishToolStripMenuItem_Click);
+            this.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem";
+            this.LogoutToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.LogoutToolStripMenuItem.Text = "Выйти";
+            this.LogoutToolStripMenuItem.Visible = false;
+            this.LogoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -249,12 +252,11 @@ namespace CookBook
         private System.Windows.Forms.ToolStripMenuItem SignUpToolStripMenuItem;
         private System.Windows.Forms.ContextMenuStrip MainContextMenu;
         private System.Windows.Forms.ToolStripMenuItem AddDishToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem ShowCategoriesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ShowKitchensToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem UpdateTableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ShowDishToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem LogoutToolStripMenuItem;
     }
 }
 
