@@ -34,8 +34,6 @@ namespace CookBook.Dialogs.Dish
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            //TODO: доделать валидацию
-
             if (string.IsNullOrEmpty(RecipeTextBox.Text))
             {
                 MessageService.ShowWarn("Заполните рецепт продукта.");

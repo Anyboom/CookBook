@@ -124,7 +124,7 @@ namespace CookBook.Dialogs.Dish
             this.MinimizeBox = false;
             this.Name = "ShowDishForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ShowDishForm";
+            this.Text = "Просмотр блюда";
             this.MainGroup.ResumeLayout(false);
             this.MainGroup.PerformLayout();
             this.ResumeLayout(false);

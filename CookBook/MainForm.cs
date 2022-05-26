@@ -53,6 +53,7 @@ namespace CookBook
             {
                 query = query.Where(s => s.KitchenId == (int) KitchenCombo.SelectedValue);
             }
+            
 
             DishGrid.DataSource = query.Select(s => new { s.Id, s.KitchenId, s.CategoryId, s.Title, KitchenName = s.Kitchen.Name, CategoryName = s.Category.Name }).ToList();
         }
@@ -116,6 +117,11 @@ namespace CookBook
             {
                 AccountToolStripMenuItem.Text = Variables.User.Login;
 
+                if (Role.IsAdmin(Variables.User))
+                {
+                    AccountToolStripMenuItem.Text += " [A]";
+                }
+
                 UpdateView();
             }
         }
@@ -161,7 +167,7 @@ namespace CookBook
 
             FirstSeparator.Visible = Role.Can(Variables.User, "MainForm.FirstSeparator");
 
-            EditDishToolStripMenuItem.Visible = Role.Can(Variables.User, "MainForm.EditDish");
+            RemoveDishToolStripMenuItem.Visible = Role.Can(Variables.User, "MainForm.RemoveDish");
         }
 
         private void KitchenCheck_CheckedChanged(object sender, EventArgs e)
@@ -174,24 +180,40 @@ namespace CookBook
             CategoryCombo.Enabled = CategoryCheck.Checked;
         }
 
-        private void EditDishToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RemoveDishToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (DishGrid.SelectedRows.Count == 0)
             {
                 return;
             }
 
-            int selectedId = (int) DishGrid.SelectedRows[0].Cells[0].Value;
+            int selectedId = (int) DishGrid.SelectedRows[0].Cells[0].Value,
+                selectedIndex = DishGrid.SelectedRows[0].Index;
 
             using MainContext db = new MainContext();
 
             if (db.Dishes.Any(c => c.Id == selectedId && c.User.Id == Variables.User.Id) || Variables.User.Role.Name == "Admin")
             {
-                MessageService.ShowInfo("true");
+                DialogResult dialogResult = MessageService.ShowQuestion($"Вы уверены, что хотите удалить рецепт с ИД: {selectedId} ?", MessageBoxButtons.YesNo);
+
+                if (dialogResult == DialogResult.Yes)
+                {
+                    Dish removeDish = db.Dishes.FirstOrDefault(c => c.Id == selectedId);
+
+                    if (removeDish == null)
+                    {
+                        return;
+                    }
+
+                    db.Dishes.Remove(removeDish);
+                    db.SaveChanges();
+
+                    MessageService.ShowInfo("Вы успешно удалили запись. Обновите таблицу !");
+                }
             }
             else
             {
-                MessageService.ShowInfo("false");
+                MessageService.ShowInfo("К сожалению, вы не автор этого рецепта, вы не можете его удалить.");
             }
         }
     }

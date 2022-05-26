@@ -51,7 +51,7 @@ namespace CookBook.Models
                 }
             },
             {
-                "MainForm.EditDish", new []
+                "MainForm.RemoveDish", new []
                 {
                     "user", "admin"
                 }
@@ -78,6 +78,11 @@ namespace CookBook.Models
         public static bool Can(User user, string area, Func<User, bool> condition)
         {
             return Can(user, area) && condition(user);
+        }
+
+        public static bool IsAdmin(User user)
+        {
+            return user.Role.Name.ToLower() == "admin";
         }
     }
 }

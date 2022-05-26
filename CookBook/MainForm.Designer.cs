@@ -41,7 +41,7 @@ namespace CookBook
             this.DishGrid = new System.Windows.Forms.DataGridView();
             this.MainContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.AddDishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.EditDishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RemoveDishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ShowDishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FirstSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.ShowCategoriesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -134,7 +134,7 @@ namespace CookBook
             // 
             this.MainContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddDishToolStripMenuItem,
-            this.EditDishToolStripMenuItem,
+            this.RemoveDishToolStripMenuItem,
             this.ShowDishToolStripMenuItem,
             this.FirstSeparator,
             this.ShowCategoriesToolStripMenuItem,
@@ -143,58 +143,58 @@ namespace CookBook
             this.UpdateTableToolStripMenuItem});
             this.MainContextMenu.Name = "MainContextMenu";
             this.MainContextMenu.ShowImageMargin = false;
-            this.MainContextMenu.Size = new System.Drawing.Size(184, 148);
+            this.MainContextMenu.Size = new System.Drawing.Size(156, 170);
             // 
             // AddDishToolStripMenuItem
             // 
             this.AddDishToolStripMenuItem.Name = "AddDishToolStripMenuItem";
-            this.AddDishToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.AddDishToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.AddDishToolStripMenuItem.Text = "Добавить блюдо";
             this.AddDishToolStripMenuItem.Visible = false;
             this.AddDishToolStripMenuItem.Click += new System.EventHandler(this.AddDishToolStripMenuItem_Click);
             // 
-            // EditDishToolStripMenuItem
+            // RemoveDishToolStripMenuItem
             // 
-            this.EditDishToolStripMenuItem.Name = "EditDishToolStripMenuItem";
-            this.EditDishToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.EditDishToolStripMenuItem.Text = "Отредактировать блюдо";
-            this.EditDishToolStripMenuItem.Click += new System.EventHandler(this.EditDishToolStripMenuItem_Click);
+            this.RemoveDishToolStripMenuItem.Name = "RemoveDishToolStripMenuItem";
+            this.RemoveDishToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.RemoveDishToolStripMenuItem.Text = "Удалить рецепт";
+            this.RemoveDishToolStripMenuItem.Click += new System.EventHandler(this.RemoveDishToolStripMenuItem_Click);
             // 
             // ShowDishToolStripMenuItem
             // 
             this.ShowDishToolStripMenuItem.Name = "ShowDishToolStripMenuItem";
-            this.ShowDishToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.ShowDishToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.ShowDishToolStripMenuItem.Text = "Открыть блюдо";
             this.ShowDishToolStripMenuItem.Click += new System.EventHandler(this.ShowDishToolStripMenuItem_Click);
             // 
             // FirstSeparator
             // 
             this.FirstSeparator.Name = "FirstSeparator";
-            this.FirstSeparator.Size = new System.Drawing.Size(180, 6);
+            this.FirstSeparator.Size = new System.Drawing.Size(152, 6);
             // 
             // ShowCategoriesToolStripMenuItem
             // 
             this.ShowCategoriesToolStripMenuItem.Name = "ShowCategoriesToolStripMenuItem";
-            this.ShowCategoriesToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.ShowCategoriesToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.ShowCategoriesToolStripMenuItem.Text = "Открыть категории";
             this.ShowCategoriesToolStripMenuItem.Click += new System.EventHandler(this.ShowCategoriesToolStripMenuItem_Click);
             // 
             // ShowKitchensToolStripMenuItem
             // 
             this.ShowKitchensToolStripMenuItem.Name = "ShowKitchensToolStripMenuItem";
-            this.ShowKitchensToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.ShowKitchensToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.ShowKitchensToolStripMenuItem.Text = "Открыть кухни";
             this.ShowKitchensToolStripMenuItem.Click += new System.EventHandler(this.ShowKitchensToolStripMenuItem_Click);
             // 
             // SecondSeparator
             // 
             this.SecondSeparator.Name = "SecondSeparator";
-            this.SecondSeparator.Size = new System.Drawing.Size(180, 6);
+            this.SecondSeparator.Size = new System.Drawing.Size(152, 6);
             // 
             // UpdateTableToolStripMenuItem
             // 
             this.UpdateTableToolStripMenuItem.Name = "UpdateTableToolStripMenuItem";
-            this.UpdateTableToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.UpdateTableToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.UpdateTableToolStripMenuItem.Text = "Обновить таблицу";
             this.UpdateTableToolStripMenuItem.Click += new System.EventHandler(this.UpdateTableToolStripMenuItem_Click);
             // 
@@ -283,9 +283,9 @@ namespace CookBook
         private System.Windows.Forms.ToolStripMenuItem UpdateTableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ShowDishToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem LogoutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem EditDishToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator FirstSeparator;
         private System.Windows.Forms.ToolStripSeparator SecondSeparator;
+        private System.Windows.Forms.ToolStripMenuItem RemoveDishToolStripMenuItem;
     }
 }
 
